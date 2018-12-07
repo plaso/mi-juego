@@ -73,15 +73,29 @@ function sortHouses(housesArr) {
   });
 }
 
-console.log(sortHouses(houses));
-
 // 5. Encontrar la casa qud tiene como Owner a Juani
+
+function juaniFunction(housesArr) {
+  return housesArr.find(function(house) {
+    return house.owner === 'Juani';
+  })
+}
 
 // 6. Comprobar si todos tienen más de 30m cuadrados
 
+function checkSize(housesArr) {
+  return housesArr.every(function(house) {
+    return house.squareMeters > 30;
+  });
+}
+
 // 7. Comprobar si alguno tiene como owner a Pepito
 
-
+function checkPepito(housesArr) {
+  return housesArr.some(function(house) {
+    return house.owner === 'Pepito';
+  })
+}
 
 var books = [
   'Harry Potter y las Reliquias de la Muerte Mortal',
@@ -92,7 +106,20 @@ var books = [
 
 // 8. Comprobar si el array books contiene 'El médico'
 
+function checkBooks(booksArr) {
+  return booksArr.includes('El médico');
+}
+
 // 9. Sacar el último elemento que tenga longitud par
+
+function lastIndex(booksArr) {
+  console.log(booksArr.map(function(book) {
+    return book.length;
+  }));
+  return booksArr.reverse().find(function(book) {
+    return book.length % 2 === 0;
+  });
+}
 
 var bullets = [
   {
@@ -116,11 +143,16 @@ var bullets = [
 ];
 
 var player = {
-  x: 45,
+  x: 36,
 }
 
 // 10. Devolver el array sin la nueva bala colisionada
 
+function checkCollision(bulletsArr, player) {
+  return bulletsArr.filter(function(bullet) {
+    return bullet.x !== player.x;
+  })
+}
 
 // EXTRA: Haz una paginación a raíz de un array:
 // ItemsNumber -> Número de elementos por página
@@ -130,3 +162,7 @@ var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 function setPagination(arr, itemsNumber) {
 
 }
+
+// Ejemplo -> setPagination(arr, 5) -> [[5 primeros], [5 ultimos]]
+// sin tocar el array original
+// map(), filter(), slice()
